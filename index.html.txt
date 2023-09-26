@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estacionamento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Controle de Estacionamento</h2>
+        <p>Bem-vindo ao sistema de controle de estacionamento do condomínio. Escolha uma das opções abaixo:</p>
+        <ul>
+            <li><a href="cadastroReserva.html">Cadastro de Reserva</a></li>
+            <li><a href="listarVagas.html">Listar Vagas</a></li>
+        </ul>
+    </div>
+
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</body>
+
+</html>
