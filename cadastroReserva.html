@@ -29,36 +29,38 @@
     <a href="listarVagas.html">Ver Vagas Cadastradas</a>
 </div>
 
-document.getElementById('reservationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Coletar informações do formulário
-    const reservationData = {
-        plate: document.getElementById('plate').value,
-        ownerName: document.getElementById('ownerName').value,
-        apartmentNumber: document.getElementById('apartmentNumber').value,
-        apartmentBlock: document.getElementById('apartmentBlock').value,
-        vehicleModel: document.getElementById('vehicleModel').value,
-        vehicleColor: document.getElementById('vehicleColor').value,
-        parkingSpot: document.getElementById('parkingSpot').value
-    };
-
-    // Salvar no localStorage
-    saveReservation(reservationData);
-
-    // Exibir no console.log
-    console.log(reservationData);
-
-    // Mostrar pop-up de confirmação
-    alert('Cadastro realizado com sucesso!');
-});
-
-function saveReservation(data) {
-    let reservations = localStorage.getItem('reservations');
-    reservations = reservations ? JSON.parse(reservations) : [];
-    reservations.push(data);
-    localStorage.setItem('reservations', JSON.stringify(reservations));
-}
-
+<script>
+    document.getElementById('reservationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        // Coletar informações do formulário
+        const reservationData = {
+            plate: document.getElementById('plate').value,
+            ownerName: document.getElementById('ownerName').value,
+            apartmentNumber: document.getElementById('apartmentNumber').value,
+            apartmentBlock: document.getElementById('apartmentBlock').value,
+            vehicleModel: document.getElementById('vehicleModel').value,
+            vehicleColor: document.getElementById('vehicleColor').value,
+            parkingSpot: document.getElementById('parkingSpot').value
+        };
+    
+        // Salvar no localStorage
+        saveReservation(reservationData);
+    
+        // Exibir no console.log
+        console.log(reservationData);
+    
+        // Mostrar pop-up de confirmação
+        alert('Cadastro realizado com sucesso!');
+    });
+    
+    function saveReservation(data) {
+        let reservations = localStorage.getItem('reservations');
+        reservations = reservations ? JSON.parse(reservations) : [];
+        reservations.push(data);
+        localStorage.setItem('reservations', JSON.stringify(reservations));
+    }
+</script>
+    
 </body>
 </html>
