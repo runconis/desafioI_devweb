@@ -1,53 +1,74 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #e8f5e9;
     margin: 0;
     padding: 0;
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 800px;
     margin: 50px auto;
     background-color: #ffffff;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 h2 {
-    color: #333;
+    color: #2e7d32;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 10px;
     margin-bottom: 20px;
+}
+
+.form-container, .list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 input[type="text"], input[type="number"], button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #c8e6c9;
     border-radius: 4px;
     font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #66bb6a;
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #66bb6a;
     color: white;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    border-radius: 4px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #43a047;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 table, th, td {
-    border: 1px solid #e0e0e0;
+    border: 1px solid #c8e6c9;
 }
 
 th, td {
@@ -56,5 +77,18 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #a5d6a7;
+    color: #fff;
+}
+
+td {
+    background-color: #e8f5e9;
+}
+
+td button {
+    background-color: #ef5350;
+}
+
+td button:hover {
+    background-color: #d32f2f;
 }
