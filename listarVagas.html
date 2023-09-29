@@ -1,93 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Vagas</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .list-container {
-            text-align: center;
-        }
-
-        table {
-            margin-top: 20px;
-        }
-    </style>
 </head>
+
 <body>
 
-<div class="container list-container">
-    <h2>Vagas Cadastradas</h2>
-    <table id="spotsTable">
-        <thead>
-            <tr>
-                <th>Placa</th>
-                <th>Proprietário</th>
-                <th>Apartamento</th>
-                <th>Bloco</th>
-                <th>Modelo</th>
-                <th>Cor</th>
-                <th>Vaga</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>DAN-8888</td>
-                <td>Daniel Dias</td>
-                <td>304</td>
-                <td>B</td>
-                <td>Palio Fire</td>
-                <td>Branco</td>
-                <td>8</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="cadastroReserva.html">Cadastrar Nova Reserva</a>
-</div>
+    <div class="container list-container">
+        <h2>Vagas Cadastradas</h2>
+        <table id="spotsTable">
+            <thead>
+                <tr>
+                    <th>Placa</th>
+                    <th>Proprietário</th>
+                    <th>Apartamento</th>
+                    <th>Bloco</th>
+                    <th>Modelo</th>
+                    <th>Cor</th>
+                    <th>Vaga</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        displayReservations();
-    });
-    
-    function displayReservations() {
-        const tbody = document.getElementById('spotsTable').querySelector('tbody');
-        let reservations = localStorage.getItem('reservations');
-        reservations = reservations ? JSON.parse(reservations) : [];
-    
-        tbody.innerHTML = '';
-        reservations.forEach((reservation, index) => {
-            const tr = document.createElement('tr');
-            
-            Object.values(reservation).forEach(value => {
-                const td = document.createElement('td');
-                td.textContent = value;
-                tr.appendChild(td);
-            });
-    
-            // Adicionar botão de remoção
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remover';
-            removeButton.addEventListener('click', function() {
-                removeReservation(index);
-            });
-            const tdButton = document.createElement('td');
-            tdButton.appendChild(removeButton);
-            tr.appendChild(tdButton);
-    
-            tbody.appendChild(tr);
+            </tbody>
+        </table>
+        <a href="cadastroReserva.html">Cadastrar Nova Reserva</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            displayReservations();
         });
-    }
-    
-    function removeReservation(index) {
-        let reservations = localStorage.getItem('reservations');
-        reservations = reservations ? JSON.parse(reservations) : [];
-        reservations.splice(index, 1);
-        localStorage.setItem('reservations', JSON.stringify(reservations));
-        displayReservations();  // Atualizar a lista após remoção
-    }
-</script>
 
+        function displayReservations() {
+            const tbody = document.getElementById('spotsTable').querySelector('tbody');
+            let reservations = localStorage.getItem('reservations');
+            reservations = reservations ? JSON.parse(reservations) : [];
+
+            tbody.innerHTML = '';
+            reservations.forEach((reservation, index) => {
+                const tr = document.createElement('tr');
+                Object.values(reservation).forEach(value => {
+                    const td = document.createElement('td');
+                    td.textContent = value;
+                    tr.appendChild(td);
+                });
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remover';
+                removeButton.addEventListener('click', function() {
+                    removeReservation(index);
+                });
+                const tdButton = document.createElement('td');
+                tdButton.appendChild(removeButton);
+                tr.appendChild(tdButton);
+                tbody.appendChild(tr);
+            });
+        }
+
+        function removeReservation(index) {
+            let reservations = localStorage.getItem('reservations');
+            reservations = reservations ? JSON.parse(reservations) : [];
+            reservations.splice(index, 1);
+            localStorage.setItem('reservations', JSON.stringify(reservations));
+            displayReservations();
+        }
+    </script>
 </body>
+
 </html>
