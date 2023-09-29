@@ -1,66 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Reserva</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .form-container {
-            text-align: center;
-        }
-    </style>
 </head>
+
 <body>
+    <div class="container form-container">
+        <h2>Cadastro de Reserva</h2>
+        <form id="reservationForm">
+            <input type="text" id="plate" placeholder="Placa do Veículo" required>
+            <input type="text" id="ownerName" placeholder="Nome do Proprietário" required>
+            <input type="number" id="apartmentNumber" placeholder="Número do Apartamento" required>
+            <input type="text" id="apartmentBlock" placeholder="Bloco do Apartamento" required>
+            <input type="text" id="vehicleModel" placeholder="Modelo do Veículo" required>
+            <input type="text" id="vehicleColor" placeholder="Cor do Veículo" required>
+            <input type="number" id="parkingSpot" placeholder="Número da Vaga de Estacionamento" required>
+            <button type="submit">Salvar</button>
+        </form>
+        <a href="listarVagas.html">Ver Vagas Cadastradas</a>
+    </div>
 
-<div class="container form-container">
-    <h2>Cadastro de Reserva</h2>
-    <form id="reservationForm">
-        <input type="text" id="plate" placeholder="Placa do Veículo" required>
-        <input type="text" id="ownerName" placeholder="Nome do Proprietário" required>
-        <input type="number" id="apartmentNumber" placeholder="Número do Apartamento" required>
-        <input type="text" id="apartmentBlock" placeholder="Bloco do Apartamento" required>
-        <input type="text" id="vehicleModel" placeholder="Modelo do Veículo" required>
-        <input type="text" id="vehicleColor" placeholder="Cor do Veículo" required>
-        <input type="number" id="parkingSpot" placeholder="Número da Vaga de Estacionamento" required>
-        
-        <button type="submit">Salvar</button>
-    </form>
-    <a href="listarVagas.html">Ver Vagas Cadastradas</a>
-</div>
+    <script>
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const reservationData = {
+                plate: document.getElementById('plate').value,
+                ownerName: document.getElementById('ownerName').value,
+                apartmentNumber: document.getElementById('apartmentNumber').value,
+                apartmentBlock: document.getElementById('apartmentBlock').value,
+                vehicleModel: document.getElementById('vehicleModel').value,
+                vehicleColor: document.getElementById('vehicleColor').value,
+                parkingSpot: document.getElementById('parkingSpot').value
+            };
+            saveReservation(reservationData);
+            console.log(reservationData);
+            alert('Cadastro realizado com sucesso!');
+        });
 
-<script>
-    document.getElementById('reservationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-    
-        // Coletar informações do formulário
-        const reservationData = {
-            plate: document.getElementById('plate').value,
-            ownerName: document.getElementById('ownerName').value,
-            apartmentNumber: document.getElementById('apartmentNumber').value,
-            apartmentBlock: document.getElementById('apartmentBlock').value,
-            vehicleModel: document.getElementById('vehicleModel').value,
-            vehicleColor: document.getElementById('vehicleColor').value,
-            parkingSpot: document.getElementById('parkingSpot').value
-        };
-    
-        // Salvar no localStorage
-        saveReservation(reservationData);
-    
-        // Exibir no console.log
-        console.log(reservationData);
-    
-        // Mostrar pop-up de confirmação
-        alert('Cadastro realizado com sucesso!');
-    });
-    
-    function saveReservation(data) {
-        let reservations = localStorage.getItem('reservations');
-        reservations = reservations ? JSON.parse(reservations) : [];
-        reservations.push(data);
-        localStorage.setItem('reservations', JSON.stringify(reservations));
-    }
-</script>
-    
+        function saveReservation(data) {
+            let reservations = localStorage.getItem('reservations');
+            reservations = reservations ? JSON.parse(reservations) : [];
+            reservations.push(data);
+            localStorage.setItem('reservations', JSON.stringify(reservations));
+        }
+    </script>
 </body>
+
 </html>
